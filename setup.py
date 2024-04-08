@@ -13,8 +13,8 @@ setup(
     author_email='anisoffgo@gmail.com',
     description='Adds numbering to pdf file',
     install_requires=[
-        "reportlab == 3.5.2",
-        "PyPDF4 == 1.27.0",
+        "reportlab >= 3.5.2",
+        "PyPDF4 >= 1.27.0",
     ],
     long_description=long_description,
     long_description_content_type='text/markdown',
