@@ -29,7 +29,7 @@ def add_numbering_to_pdf(pdf_file, new_pdf_file_path=None, position="center", st
     new_pdf_file = merge_pdf_pages(original_pdf, empty_numbered_pdf)
     if new_pdf_file_path:
         save_file(new_pdf_file, new_pdf_file_path)
-    return new_pdf_file
+    else: return new_pdf_file
 
 
 def get_pdf_file(pdf_file) -> bytes:
@@ -62,7 +62,7 @@ def get_width_of_pages(original_pdf, position) -> list:
     width_of_pages = []
     for index in range(original_pdf.getNumPages()):
         ratio = original_pdf.getPage(index).mediaBox.getWidth() / 200
-        width = position_to_width[position] * ratio * mm
+        width = position_to_width[position] * float(ratio) * mm
         width_of_pages.append(width)
     return width_of_pages
 
