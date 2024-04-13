@@ -37,10 +37,9 @@ def get_pdf_file(pdf_file) -> bytes:
         file.close()
     return pdf_file
 
-switch_position = {
-    "left": "right",
-    "center": "center",
-    "right": "left"}
+alt_position = {
+    "inner": ("right","left"),
+    "outer": ("left","right")}
 position_to_width = {
     "left": 10,
     "center": 38,
@@ -53,11 +52,12 @@ def create_empty_numbered_pdf(original_pdf, position, start_page, end_page,
     for index in range(number_of_pages):
         page_num = index - start_page + start_index
         number = str(page_num) if start_page<=index<end_page else ""
-        pactual = position if page_num%2 else switch_position[position]
+        page_pos = position if position in position_to_width else \
+            alt_position[position][page_num%2]
         pagebox = original_pdf.getPage(index).mediaBox
         ratio = pagebox.getWidth() / 200 # A4 paper?
         height = 15 * mm #from bottom? pagebox.getHeight()
-        width_on_page = position_to_width[pactual] * float(ratio) * mm
+        width_on_page = position_to_width[page_pos] * float(ratio) * mm
         empty_canvas.setFont(font, size)
         empty_canvas.drawString(width_on_page, height, number)
         empty_canvas.showPage()

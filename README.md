@@ -37,7 +37,7 @@ add_numbering_to_pdf("old_file.pdf", "test/new_file.pdf")
 
 ---
 
-position - position on screen (left, center, right)
+position - position on screen (left, center, right, inner, outer)
 
 ```python
 add_numbering_to_pdf("old_file.pdf", "new_file.pdf", position="left")
@@ -49,6 +49,16 @@ add_numbering_to_pdf("old_file.pdf", "new_file.pdf", position="center")
 
 ```python
 add_numbering_to_pdf("old_file.pdf", "new_file.pdf", position="right")
+```
+
+```python
+# To the right on odd numbered page, to the left on even numbered page.
+add_numbering_to_pdf("old_file.pdf", "new_file.pdf", position="outer")
+```
+
+```python
+# To the left on odd numbered page, to the right on even numbered page.
+add_numbering_to_pdf("old_file.pdf", "new_file.pdf", position="inner")
 ```
 
 ---
